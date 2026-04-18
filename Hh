@@ -1,0 +1,38 @@
+React Native Expo IPA Build Guide (Plain Text)
+Project: regz-super-app (Expo SDK 54)
+Step 1: Install Homebrew (පළමු වතාවේදී)
+/bin/bash -c “$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)”
+Homebrew install වුණාට පස්සේ Terminal restart කරලා බලන්න: brew –version
+Step 2: Install CocoaPods
+brew install cocoapods
+CocoaPods install වුණාද කියලා බලන්න: pod –version
+Step 3: Install expo-dev-client
+npx expo install expo-dev-client
+Step 4: Generate ios folder (Prebuild)
+npx expo prebuild
+වැදගත්: Prebuild කරන්න කලින් project එක backup එකක් ගන්න (zip කරලා තියාගන්න)!
+Step 5: Install Pods
+cd ios pod install cd ..
+Step 6: Open in Xcode
+open ios/regz-super-app.xcworkspace
+හෝ Finder එකෙන් ios folder ඇතුළට ගිහින් regz-super-app.xcworkspace file එක double click කරන්න.
+Step 7: Xcode එකේ Signing Setup කරන්න
+•  Left side එකේ project name click කරන්න
+•  Signing & Capabilities tab එකට යන්න
+•  Automatically manage signing tick කරන්න
+•  ඔයාගේ Apple ID එක login කරලා Team එක select කරන්න
+Step 8: IPA File එක Build කරන්න (Archive)
+•  Xcode එකේ Product → Archive කරන්න
+•  Archive complete වුණාට පස්සේ Organizer window එකේ Distribute App click කරන්න
+•  Ad Hoc (testing සඳහා) හෝ App Store තෝරන්න
+•  Steps follow කරලා Export කරන්න → .ipa file එක හම්බෙනවා
+Quick Test කරන්න (Simulator එකේ)
+npx expo run:ios
+ගැටලු ආවොත් Clean කරන්න
+rm -rf ~/Library/Developer/Xcode/DerivedData
+එක පාරටම commands (Copy කරගන්න)
+1.  /bin/bash -c “$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)”
+2.  brew install cocoapods
+3.  npx expo install expo-dev-client
+4.  npx expo prebuild
+5.  cd ios && pod install && cd ..
